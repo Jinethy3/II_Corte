@@ -1,18 +1,24 @@
 #include <Arduino.h>
+#include <DataCapture.h>
 
-// put function declarations here:
-int myFunction(int, int);
+int numero, factorial = 1;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  Serial.println();
+
+  numero = DataCapture::captureInteger("Ingrese el valor del número: ");
+
+  for (int i = 1; i <= numero; i++) {
+    factorial = factorial * i;
+  }
+
+  Serial.print("El factorial de ");
+  Serial.print(numero);
+  Serial.print(" es: ");
+  Serial.println(factorial);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+ 
 }
